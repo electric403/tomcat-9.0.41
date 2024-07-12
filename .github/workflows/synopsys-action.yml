@@ -14,10 +14,14 @@ jobs:
       - name: Checkout Source
         uses: actions/checkout@v3
       - name: Synopsys Application Security Testing
+        if: ${{ github.event_name != 'pull_request' }}
         uses: synopsys-sig/synopsys-action@v1.10.0
         with:
           blackduck_url: ${{ vars.BLACKDUCK_URL }}
           blackduck_token: ${{ secrets.BLACKDUCK_TOKEN }}
+          blackduck_scan_failure_severities: 'BLOCKER,CRITICAL'
+          blackduck_search_depth: 4
+          blackduck_args: '--detect.diagnostic=true'
         env:
           BLACKDUCK_TRUST_CERT: true
 
