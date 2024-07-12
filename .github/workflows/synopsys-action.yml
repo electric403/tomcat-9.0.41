@@ -28,7 +28,7 @@ jobs:
           blackduck_url: ${{ vars.BLACKDUCK_URL }}
           blackduck_token: ${{ secrets.BLACKDUCK_TOKEN }}
           blackduck_scan_failure_severities: 'BLOCKER,CRITICAL'
-          blackduck_args: '--detect.diagnostic=true --detect.tools=ALL --detect.project.name=SIGSCAN_ALL
+          blackduck_args: '--detect.diagnostic=true --detect.tools=ALL --detect.project.name=SIGSCAN_ALL'
           #blackduck_args: '--detect.diagnostic=true --detect.tools=SIGNATURE_SCAN --detect.project.name=SIGSCAN'
           blackduck_scan_full: 'true'
           blackduck_search_depth: 4
