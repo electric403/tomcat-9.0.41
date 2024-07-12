@@ -14,7 +14,7 @@ jobs:
     #  contents: write
     steps:
       - name: Get Sigma Tools
-        run: curl -O https://sig-repo.synopsys.com/artifactory/sigma-release-trial/2024.6.1/sigma-linux_x86_64
+        run: curl -o  https://sig-repo.synopsys.com/artifactory/sigma-release-trial/2024.6.1/sigma-linux_x86_64 
       - name: Checkout Source
         uses: actions/checkout@v3
       - name: Synopsys Application Security Testing
@@ -24,7 +24,7 @@ jobs:
           blackduck_url: ${{ vars.BLACKDUCK_URL }}
           blackduck_token: ${{ secrets.BLACKDUCK_TOKEN }}
           blackduck_scan_failure_severities: 'BLOCKER,CRITICAL'
-          #blackduck_args: '--detect.diagnostic=true --detect.tools=SIGNATURE_SCAN'
+          #blackduck_args: '--detect.diagnostic=true --detect.tools=IAC_SCAN'
           blackduck_scan_full: 'true'
           blackduck_search_depth: 4
           blackduck_upload_sarif_report: true
