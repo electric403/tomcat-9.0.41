@@ -31,7 +31,7 @@ jobs:
           blackduck_args: '--detect.diagnostic=true --detect.tools=IAC_SCAN --detect.iac.scanner.local.path=/opt/blackduck/hub/uploads/tools/sigma/2024.6.1_linux_x86_64 --detect.project.name=IAC_test2'
           blackduck_scan_full: 'true'
           blackduck_search_depth: 4
-          blackduck_upload_sarif_report: false
+          blackduck_upload_sarif_report: true
           blackduck_reports_sarif_create: false
           github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
