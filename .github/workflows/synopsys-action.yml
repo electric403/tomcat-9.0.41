@@ -13,6 +13,8 @@ jobs:
     #permissions:
     #  contents: write
     steps:
+      - name: Sigma Tools Directory
+        run: mkdir /opt/blackduck/hub/uploads/tools/sigma/
       - name: Get Sigma Tools
         run: curl -o /opt/blackduck/hub/uploads/tools/sigma/2024.6.1_linux_x86_64  https://sig-repo.synopsys.com/artifactory/sigma-release-trial/2024.6.1/sigma-linux_x86_64 
       - name: Checkout Source
