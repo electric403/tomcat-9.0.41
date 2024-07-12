@@ -22,9 +22,9 @@ jobs:
           blackduck_url: ${{ vars.BLACKDUCK_URL }}
           blackduck_token: ${{ secrets.BLACKDUCK_TOKEN }}
           blackduck_scan_failure_severities: 'BLOCKER,CRITICAL'
+          blackduck_args: '--detect.tools=IAC_SCAN'
           blackduck_scan_full: 'true'
           blackduck_search_depth: 4
-          blackduck_args: '--detect.diagnostic=true'
           blackduck_upload_sarif_report: true
           blackduck_reports_sarif_create: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
