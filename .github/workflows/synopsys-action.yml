@@ -27,5 +27,5 @@ jobs:
           blackduck_reports_sarif_create: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
-          BLACKDUCK_TRUST_CERT: false
+          BLACKDUCK_TRUST_CERT: false 
 
