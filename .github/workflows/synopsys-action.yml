@@ -21,7 +21,7 @@ jobs:
       - name: Checkout Source
         uses: actions/checkout@v3
       - name: Synopsys Application Security Testing
-        if: ${{ github.event_name != 'pull_request' }}
+        if: ${{ github.event_name != 'pull_request' }}   
         uses: synopsys-sig/synopsys-action@v1.10.0
         with:
           blackduck_url: ${{ vars.BLACKDUCK_URL }}
@@ -35,3 +35,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
           BLACKDUCK_TRUST_CERT: false
+      - name: GET Directory
+        run: |     
+          ls -lR /home/runner
