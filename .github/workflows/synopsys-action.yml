@@ -27,7 +27,7 @@ jobs:
           blackduck_url: ${{ vars.BLACKDUCK_URL }}
           blackduck_token: ${{ secrets.BLACKDUCK_TOKEN }}
           blackduck_scan_failure_severities: 'BLOCKER,CRITICAL'
-          blackduck_args: '--detect.diagnostic=true --detect.project.name=tomcat-9.0.41 --detect.tools=DETECTOR --detect.excluded.detector.types=GIT'
+          blackduck_args: '--detect.diagnostic=true --detect.project.name=tomcat-9.0.41 --detect.tools=DETECTOR --detect.excluded.detector.types=GIT --logging.level.com.synopsys.integration=DEBUG'
           blackduck_scan_full: 'true'
           blackduck_search_depth: 4
           blackduck_upload_sarif_report: true
