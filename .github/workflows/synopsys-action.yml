@@ -37,7 +37,7 @@ jobs:
           BLACKDUCK_TRUST_CERT: false
       - name: GET Directory
         run: |
-          la -l /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json
+          ls -l /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json
           cat /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json
           tail /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json
       - uses: actions/upload-artifact@v4
