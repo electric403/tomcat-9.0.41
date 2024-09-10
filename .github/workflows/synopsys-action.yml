@@ -35,11 +35,9 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
           BLACKDUCK_TRUST_CERT: false
-      - name: GET Directory
+      - name: Copy Output
         run: |
-          ls -l /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json
           cp /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json ${{ github.workspace }}report.sarif.json
-
       - uses: actions/upload-artifact@v4
         with:
           name: report.sarif.json
