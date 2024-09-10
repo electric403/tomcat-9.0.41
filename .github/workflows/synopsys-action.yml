@@ -27,7 +27,7 @@ jobs:
           blackduck_url: ${{ vars.BLACKDUCK_URL }}
           blackduck_token: ${{ secrets.BLACKDUCK_TOKEN }}
           blackduck_scan_failure_severities: 'BLOCKER,CRITICAL'
-          blackduck_args: '--detect.diagnostic=true --detect.project.name=workflow-all-w-iac-sarif --detect.tools=DETECTOR,IAC_SCAN --detect.excluded.detector.types=GIT --detect.iac.scanner.local.path=/opt/blackduck/hub/uploads/tools/sigma/2024.6.1_linux_x86_64'
+          blackduck_args: '--detect.diagnostic=true --detect.project.name=tomcat-9.0.41 --detect.tools=DETECTOR --detect.excluded.detector.types=GIT'
           blackduck_scan_full: 'true'
           blackduck_search_depth: 4
           blackduck_upload_sarif_report: true
@@ -37,9 +37,9 @@ jobs:
           BLACKDUCK_TRUST_CERT: false
       - name: GET Directory
         run: |     
-          cat /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/Blackduck SARIF Generator/report.sarif.json
+          cat /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json
       - uses: actions/upload-artifact@v4
         with:
           name: report.sarif.json
-          path: /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/Blackduck SARIF Generator/report.sarif.json
+          path: /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json
           compression-level: 0 # no compression    
