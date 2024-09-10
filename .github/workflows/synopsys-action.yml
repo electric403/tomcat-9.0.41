@@ -38,13 +38,10 @@ jobs:
       - name: GET Directory
         run: |
           ls -l /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json
-          cat /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json
-          tail /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json
-          pwd
-          cd ${{ github.workspace }}
-          pwd
+          cp /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json ${{ github.workspace }}report.sarif.json
+
       - uses: actions/upload-artifact@v4
         with:
           name: report.sarif.json
-          path: ${{ github.workspace }}/.bridge/"Blackduck SARIF Generator"/report.sarif.json
+          path: ${{ github.workspace }}report.sarif.json
           compression-level: 0 # no compression    
