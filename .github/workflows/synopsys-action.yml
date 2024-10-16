@@ -27,7 +27,7 @@ jobs:
           blackduck_url: ${{ vars.BLACKDUCK_URL }}
           blackduck_token: ${{ secrets.BLACKDUCK_TOKEN }}
           blackduck_scan_failure_severities: 'BLOCKER,CRITICAL'
-          blackduck_args: '--detect.diagnostic=true --detect.project.name=tomcat-9.0.41 --detect.tools=DETECTOR --detect.excluded.detector.types=GIT --logging.level.com.synopsys.integration=DEBUG'
+          blackduck_args: '--detect.diagnostic=true --detect.project.name=tomcat-9.0.41 --detect.tools=DETECTOR --detect.excluded.detector.types=GIT'
           blackduck_scan_full: 'true'
           blackduck_search_depth: 4
           blackduck_upload_sarif_report: true
@@ -35,7 +35,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
           BLACKDUCK_TRUST_CERT: false
-       - name: Copy Output
+      - name: Copy Output
         run: |
           cp /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json ${{ github.workspace }}report.sarif.json
       - uses: actions/upload-artifact@v4
