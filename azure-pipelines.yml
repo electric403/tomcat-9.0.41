@@ -22,11 +22,11 @@ steps:
     #BLACKDUCKSCA_SCAN_FAILURE_SEVERITIES: 'BLOCKER,CRITICAL'
     
     ### Uncomment below configuration to enable automatic fix pull request creation if vulnerabilities are reported
-    BLACKDUCKSCA_FIXPR_FILTER_SEVERITIES: "CRITICAL,  HIGH"
-    BLACKDUCKSCA_FIXPR_ENABLED: true
-    BLACKDUCKSCA_FIXPR_MAXCOUNT: 2
-    BLACKDUCKSCA_FIXPR_USEUPGRADEGUIDANCE: 'SHORT_TERM,LONG_TERM'
-    AZURE_TOKEN: $(System.AccessToken) # Mandatory when BLACKDUCK_FIXPR_ENABLED is set to 'true'
+    # BLACKDUCKSCA_FIXPR_FILTER_SEVERITIES: "CRITICAL,  HIGH"
+    # BLACKDUCKSCA_FIXPR_ENABLED: true
+    # BLACKDUCKSCA_FIXPR_MAXCOUNT: 2
+    # BLACKDUCKSCA_FIXPR_USEUPGRADEGUIDANCE: 'SHORT_TERM,LONG_TERM'
+    # AZURE_TOKEN: $(System.AccessToken) # Mandatory when BLACKDUCK_FIXPR_ENABLED is set to 'true'
     
     ### Uncomment below configuration if Bridge diagnostic files needs to be uploaded
     # INCLUDE_DIAGNOSTICS: true
@@ -42,26 +42,26 @@ steps:
    
     ### Detect Tool Settings
     # DETECT_SEARCH_DEPTH: 2
-    # DETECT_ARGS: '--detect.diagnostic=true'
+    DETECT_ARGS: '--detect.diagnostic=true'
     # DETECT_CONFIG_PATH: '/Users/tmp/application.properties'
     
   ### Uncomment below to use returned status in subsequent tasks if MARK_BUILD_STATUS is not set or set to FAILED
   # continueOnError: true
         
-- task: BlackDuckSecurityScan@2.0.0
-  displayName: 'Black Duck PR Scan'
-  condition: eq(variables['Build.Reason'], 'PullRequest')
-  ### Use below configuration to set specific detect environment variables
-  #env:
-    #DETECT_PROJECT_NAME: $(Build.Repository.Name)
-  inputs:
-    BLACKDUCKSCA_URL: $(BLACKDUCK_URL)
-    BLACKDUCKSCA_TOKEN: $(BLACKDUCK_TOKEN)
-    BLACKDUCKSCA_SCAN_FULL: false
-    
-    ### Below configuration is used to enable automatic pull request comment based on Black Duck SCA scan result
-    BLACKDUCKSCA_PRCOMMENT_ENABLED: true
-    AZURE_TOKEN: $(System.AccessToken) # Mandatory when BLACKDUCKSCA_PRCOMMENT_ENABLED is set to 'true'
+# - task: BlackDuckSecurityScan@2.0.0
+#   displayName: 'Black Duck PR Scan'
+#   condition: eq(variables['Build.Reason'], 'PullRequest')
+#   ### Use below configuration to set specific detect environment variables
+#   #env:
+#     #DETECT_PROJECT_NAME: $(Build.Repository.Name)
+#   inputs:
+#     BLACKDUCKSCA_URL: $(BLACKDUCK_URL)
+#     BLACKDUCKSCA_TOKEN: $(BLACKDUCK_TOKEN)
+#     BLACKDUCKSCA_SCAN_FULL: false
+#     
+#     ### Below configuration is used to enable automatic pull request comment based on Black Duck SCA scan result
+#     BLACKDUCKSCA_PRCOMMENT_ENABLED: true
+#     AZURE_TOKEN: $(System.AccessToken) # Mandatory when BLACKDUCKSCA_PRCOMMENT_ENABLED is set to 'true'
     
     ### Uncomment below configuration if Bridge diagnostic files needs to be uploaded
     # INCLUDE_DIAGNOSTICS: true
