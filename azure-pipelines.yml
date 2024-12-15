@@ -29,7 +29,7 @@ steps:
     # AZURE_TOKEN: $(System.AccessToken) # Mandatory when BLACKDUCK_FIXPR_ENABLED is set to 'true'
     
     ### Uncomment below configuration if Bridge diagnostic files needs to be uploaded
-    # INCLUDE_DIAGNOSTICS: true
+    INCLUDE_DIAGNOSTICS: true
     
     # NETWORK_AIRGAP: true
     # BRIDGECLI_INSTALL_DIRECTORY: $(BRIDGECLI_INSTALL_DIRECTORY)
