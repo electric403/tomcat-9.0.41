@@ -5,40 +5,85 @@ pool: self-hosted
   
 variables:
   - group: Blackduck
-  
+
 steps:
 - task: BlackDuckSecurityScan@2.0.0
-  displayName: 'Black Duck Scan'
-  ### Configuration to set specific detect environment variables
+  displayName: 'Black Duck Full Scan'
+  condition: not(eq(variables['Build.Reason'], 'PullRequest'))
+  ### Use below configuration to set specific detect environment variables
   env:
     DETECT_PROJECT_NAME: $(Build.Repository.Name)
   inputs:
-    BLACKDUCKSCA_URL: $(BLACKDUCK_URL)
-    BLACKDUCKSCA_TOKEN: $(BLACKDUCK_TOKEN)
+    BLACKDUCKSCA_URL: $(BLACKDUCKSCA_URL)
+    BLACKDUCKSCA_TOKEN: $(BLACKDUCKSCA_TOKEN)
+    BLACKDUCKSCASCA_SCAN_FULL: true
+    # BLACKDUCKSCA_WAITFORSCAN: false   # Used to support the async mode 
+    ### Accepts Multiple Values
+    #BLACKDUCKSCA_SCAN_FAILURE_SEVERITIES: 'BLOCKER,CRITICAL'
     
-    ### Mandatory when BLACKDUCKSCA_PRCOMMENT_ENABLED or BLACKDUCKSCA_FIXPR_ENABLED is set true
-    # AZURE_TOKEN: $(System.AccessToken)
+    ### Uncomment below configuration to enable automatic fix pull request creation if vulnerabilities are reported
+    BLACKDUCKSCA_FIXPR_FILTER_SEVERITIES: "CRITICAL,  HIGH"
+    BLACKDUCKSCA_FIXPR_ENABLED: true
+    BLACKDUCKSCA_FIXPR_MAXCOUNT: 2
+    BLACKDUCKSCA_FIXPR_USEUPGRADEGUIDANCE: 'SHORT_TERM,LONG_TERM'
+    AZURE_TOKEN: $(System.AccessToken) # Mandatory when BLACKDUCK_FIXPR_ENABLED is set to 'true'
     
-    ### Pull Request Comments
-    # BLACKDUCKSCA_PRCOMMENT_ENABLED: true
+    ### Uncomment below configuration if Bridge diagnostic files needs to be uploaded
+    # INCLUDE_DIAGNOSTICS: true
     
-    ### Fix Pull Request creation
-    # BLACKDUCKSCA_FIXPR_ENABLED: true
+    # NETWORK_AIRGAP: true
+    # BRIDGECLI_INSTALL_DIRECTORY: $(BRIDGECLI_INSTALL_DIRECTORY)
     
-    ### SARIF report generation 
-    # BLACKDUCKSCA_REPORTS_SARIF_CREATE: true
+    ### Uncomment below configuration to specify the project directory
+    # PROJECT_DIRECTORY: "$(PROJECT_DIRECTORY)"
     
-    ### Mark build status if policy violating issues are found
+    ### Uncomment below configuration to mark build status if policy violating issues are found
     # MARK_BUILD_STATUS: 'SucceededWithIssues'
+   
+    ### Detect Tool Settings
+    # DETECT_SEARCH_DEPTH: 2
+    # DETECT_ARGS: '--detect.diagnostic=true'
+    # DETECT_CONFIG_PATH: '/Users/tmp/application.properties'
     
   ### Uncomment below to use returned status in subsequent tasks if MARK_BUILD_STATUS is not set or set to FAILED
   # continueOnError: true
-
+        
+- task: BlackDuckSecurityScan@2.0.0
+  displayName: 'Black Duck PR Scan'
+  condition: eq(variables['Build.Reason'], 'PullRequest')
+  ### Use below configuration to set specific detect environment variables
+  #env:
+    #DETECT_PROJECT_NAME: $(Build.Repository.Name)
+  inputs:
+    BLACKDUCKSCA_URL: $(BLACKDUCK_URL)
+    BLACKDUCKSCA_TOKEN: $(BLACKDUCK_TOKEN)
+    BLACKDUCKSCA_SCAN_FULL: false
+    
+    ### Below configuration is used to enable automatic pull request comment based on Black Duck SCA scan result
+    BLACKDUCKSCA_PRCOMMENT_ENABLED: true
+    AZURE_TOKEN: $(System.AccessToken) # Mandatory when BLACKDUCKSCA_PRCOMMENT_ENABLED is set to 'true'
+    
+    ### Uncomment below configuration if Bridge diagnostic files needs to be uploaded
+    # INCLUDE_DIAGNOSTICS: true
+    
+    ### Uncomment below configuration to specify the project directory
+    # PROJECT_DIRECTORY: $(PROJECT_DIRECTORY)
+    
+    ### Uncomment below configuration to mark build status if policy violating issues are found
+    # MARK_BUILD_STATUS: 'SucceededWithIssues'
+    
+    ### Detect Tool Settings
+    # DETECT_SEARCH_DEPTH: 2
+    # DETECT_ARGS: '--detect.diagnostic=true'
+    # DETECT_CONFIG_PATH: '/Users/tmp/application.properties'
+    
+  ### Uncomment below to use returned status in subsequent tasks if MARK_BUILD_STATUS is not set or set to FAILED
+  # continueOnError: true
+    
 ### Uncomment below configuration to add custom logic based on return status    
 # - task: CmdLine@2
 #   displayName: 'Command Line'
 #   condition: not(eq(variables['BlackDuckSecurityScan.status'], '0'))
 #   inputs:
 #     script: |
-#       echo Black Duck Security Scan exit status - $(BlackDuckSecurityScan.status)
- 
+#       echo Black Duck Security Scan exit status - $(BlackDuckSecurityScan.status)      
