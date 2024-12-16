@@ -42,7 +42,7 @@ steps:
    
     ### Detect Tool Settings
     DETECT_SEARCH_DEPTH: 4
-    DETECT_ARGS: '--detect.diagnostic=true --detect.blackduck.signature.scanner.arguments=--exclude\ \/webapps\/'
+    DETECT_ARGS: '--detect.diagnostic=true --detect.blackduck.signature.scanner.arguments=--exclude\ /webapps/'
     # DETECT_CONFIG_PATH: '/Users/tmp/application.properties'
     
   ### Uncomment below to use returned status in subsequent tasks if MARK_BUILD_STATUS is not set or set to FAILED
