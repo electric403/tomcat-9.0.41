@@ -15,9 +15,9 @@ jobs:
     steps:
       - name: GET Sigma Tools
         run: |
-          mkdir -p /opt/blackduck/hub/uploads/tools/sigma/
-          curl -o /opt/blackduck/hub/uploads/tools/sigma/2024.6.1_linux_x86_64  https://sig-repo.synopsys.com/artifactory/sigma-release-trial/2024.6.1/sigma-linux_x86_64
-          chmod +x /opt/blackduck/hub/uploads/tools/sigma/2024.6.1_linux_x86_64
+          sudo mkdir -p /opt/blackduck/hub/uploads/tools/sigma/
+          sudo curl -o /opt/blackduck/hub/uploads/tools/sigma/2024.6.1_linux_x86_64  https://sig-repo.synopsys.com/artifactory/sigma-release-trial/2024.6.1/sigma-linux_x86_64
+          sudo chmod +x /opt/blackduck/hub/uploads/tools/sigma/2024.6.1_linux_x86_64
       - name: Checkout Source
         uses: actions/checkout@v3
       - name: Synopsys Application Security Testing
