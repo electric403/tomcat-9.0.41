@@ -30,8 +30,8 @@ jobs:
           blackduck_args: '--detect.diagnostic=false --detect.logging=INFO --detect.project.name=tomcat-9.0.41 --detect.project.version.name=synopsys-action --detect.tools=ALL --detect.excluded.detector.types=GIT'
           blackduck_scan_full: 'true'
           blackduck_search_depth: 4
-          blackduck_upload_sarif_report: true
-          blackduck_reports_sarif_create: true
+          blackduck_upload_sarif_report: false
+          blackduck_reports_sarif_create: false
           github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
           BLACKDUCK_TRUST_CERT: false
