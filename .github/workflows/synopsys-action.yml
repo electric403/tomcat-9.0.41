@@ -1,4 +1,4 @@
-name: Synopsys
+name: Black Duck
 
 # Controls when the workflow will run
 on:
@@ -20,7 +20,7 @@ jobs:
           chmod +x /opt/blackduck/hub/uploads/tools/sigma/2024.6.1_linux_x86_64
       - name: Checkout Source
         uses: actions/checkout@v3
-      - name: Synopsys Application Security Testing
+      - name: Black Duck Security Scan
         if: ${{ github.event_name != 'pull_request' }}   
         uses: blackduck-inc/black-duck-security-scan@v2.0.0
         with:
@@ -35,12 +35,12 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
           BLACKDUCK_TRUST_CERT: false
-          DETECT_LATEST_RELEASE_VERSION: 9.5.0 #does not work...
-      - name: Copy Output
-        run: |
-          cp /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json ${{ github.workspace }}report.sarif.json
-      - uses: actions/upload-artifact@v4
-        with:
-          name: report.sarif.json
-          path: ${{ github.workspace }}report.sarif.json
-          compression-level: 0 # no compression    
+      #    DETECT_LATEST_RELEASE_VERSION: 9.5. #does not work...
+      #- name: Copy Output
+      #  run: |
+      #    cp /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json ${{ github.workspace }}report.sarif.json
+      #- uses: actions/upload-artifact@v4
+      #  with:
+      #    name: report.sarif.json
+      #    path: ${{ github.workspace }}report.sarif.json
+      #    compression-level: 0 # no compression    
