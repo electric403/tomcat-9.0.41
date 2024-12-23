@@ -31,7 +31,7 @@ jobs:
           blackducksca_scan_full : 'true'
           detect_search_depth: 4
           blackducksca_upload_sarif_report: false
-          blackducksca_reports_sarif_create: true
+          blackducksca_reports_sarif_create: false
           github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
           BLACKDUCK_TRUST_CERT: false
