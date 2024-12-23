@@ -12,7 +12,7 @@ steps:
   condition: not(eq(variables['Build.Reason'], 'PullRequest'))
   ### Use below configuration to set specific detect environment variables
   env:
-    DETECT_PROJECT_NAME: $(Build.Repository.Name)
+    DETECT_PROJECT_NAME: az-$(Build.Repository.Name)
   inputs:
     BLACKDUCKSCA_URL: $(BLACKDUCKSCA_URL)
     BLACKDUCKSCA_TOKEN: $(BLACKDUCKSCA_TOKEN)
