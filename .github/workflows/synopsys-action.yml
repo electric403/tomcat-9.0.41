@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: [ arc-runner ]
+    runs-on: linux-latest
     #permissions:
     #  contents: write
     steps:
