@@ -26,7 +26,7 @@ steps:
     BLACKDUCKSCA_FIXPR_ENABLED: true
     #BLACKDUCKSCA_FIXPR_MAXCOUNT: 2
     #BLACKDUCKSCA_FIXPR_USEUPGRADEGUIDANCE: 'SHORT_TERM,LONG_TERM'
-    #AZURE_TOKEN: $(System.AccessToken) # Mandatory when BLACKDUCK_FIXPR_ENABLED is set to 'true'
+    AZURE_TOKEN: $(System.AccessToken) # Mandatory when BLACKDUCK_FIXPR_ENABLED is set to 'true'
     
     ### Uncomment below configuration if Bridge diagnostic files needs to be uploaded
     # INCLUDE_DIAGNOSTICS: true
