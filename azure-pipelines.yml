@@ -19,11 +19,11 @@ steps:
     BLACKDUCKSCASCA_SCAN_FULL: true
     BLACKDUCKSCA_WAITFORSCAN: true   # Used to support the async mode 
     ### Accepts Multiple Values
-    BLACKDUCKSCA_SCAN_FAILURE_SEVERITIES: 'BLOCKER,CRITICAL'
+    #BLACKDUCKSCA_SCAN_FAILURE_SEVERITIES: 'BLOCKER,CRITICAL'
     
     ### Uncomment below configuration to enable automatic fix pull request creation if vulnerabilities are reported
     #BLACKDUCKSCA_FIXPR_FILTER_SEVERITIES: "CRITICAL,  HIGH"
-    BLACKDUCKSCA_FIXPR_ENABLED: false
+    #BLACKDUCKSCA_FIXPR_ENABLED: false
     #BLACKDUCKSCA_FIXPR_MAXCOUNT: 2
     #BLACKDUCKSCA_FIXPR_USEUPGRADEGUIDANCE: 'SHORT_TERM,LONG_TERM'
     #AZURE_TOKEN: $(System.AccessToken) # Mandatory when BLACKDUCK_FIXPR_ENABLED is set to 'true'
@@ -38,7 +38,7 @@ steps:
     #PROJECT_DIRECTORY: "$(PROJECT_DIRECTORY)"
     
     ### Uncomment below configuration to mark build status if policy violating issues are found
-    MARK_BUILD_STATUS: 'SucceededWithIssues'
+    #MARK_BUILD_STATUS: 'SucceededWithIssues'
    
     ### Detect Tool Settings
     DETECT_SEARCH_DEPTH: 4
