@@ -35,7 +35,7 @@ steps:
     # BRIDGECLI_INSTALL_DIRECTORY: $(BRIDGECLI_INSTALL_DIRECTORY)
     
     ### Uncomment below configuration to specify the project directory
-    PROJECT_DIRECTORY: "$(PROJECT_DIRECTORY)"
+    #PROJECT_DIRECTORY: "$(PROJECT_DIRECTORY)"
     
     ### Uncomment below configuration to mark build status if policy violating issues are found
     # MARK_BUILD_STATUS: 'SucceededWithIssues'
