@@ -50,7 +50,7 @@ steps:
         
 - task: BlackDuckSecurityScan@2.0.0
   displayName: 'Black Duck PR Scan'
-  condition: eq(variables['Build.Reason'], 'PullRequest')
+  #condition: eq(variables['Build.Reason'], 'PullRequest')
    ### Use below configuration to set specific detect environment variables
   env:
     DETECT_PROJECT_NAME: $(Build.Repository.Name)
