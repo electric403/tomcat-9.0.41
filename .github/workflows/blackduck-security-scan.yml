@@ -27,7 +27,7 @@ jobs:
           blackducksca_url: ${{ vars.BLACKDUCK_URL }}
           blackducksca_token: ${{ secrets.BLACKDUCK_TOKEN }}
           #blackducksca_scan_failure_severities : 'BLOCKER,CRITICAL'
-          detect_args: '--detect.diagnostic=false --detect.logging=INFO --detect.project.name=gh-tomcat-9.0.41 --detect.project.version.name=synopsys-action --detect.tools=ALL --detect.excluded.detector.types=GIT'
+          detect_args: '--detect.diagnostic=false --detect.logging=INFO --detect.project.name=gh-tomcat-9.0.41 --detect.project.version.name=bd-security-scan --detect.tools=ALL --detect.excluded.detector.types=GIT'
           blackducksca_scan_full : 'true'
           detect_search_depth: 4
           blackducksca_upload_sarif_report: true
