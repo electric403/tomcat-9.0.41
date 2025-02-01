@@ -38,7 +38,7 @@ steps:
     #PROJECT_DIRECTORY: "$(PROJECT_DIRECTORY)"
     
     ### Uncomment below configuration to mark build status if policy violating issues are found
-    # MARK_BUILD_STATUS: 'SucceededWithIssues'
+    MARK_BUILD_STATUS: 'SucceededWithIssues'
    
     ### Detect Tool Settings
     DETECT_SEARCH_DEPTH: 4
@@ -46,7 +46,7 @@ steps:
     # DETECT_CONFIG_PATH: '/Users/tmp/application.properties'
     
   ### Uncomment below to use returned status in subsequent tasks if MARK_BUILD_STATUS is not set or set to FAILED
-  #continueOnError: true
+  continueOnError: true
         
 - task: BlackDuckSecurityScan@2.0.0
   displayName: 'Black Duck PR Scan'
