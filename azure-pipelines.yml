@@ -23,7 +23,7 @@ steps:
     
     ### Uncomment below configuration to enable automatic fix pull request creation if vulnerabilities are reported
     #BLACKDUCKSCA_FIXPR_FILTER_SEVERITIES: "CRITICAL,  HIGH"
-    #BLACKDUCKSCA_FIXPR_ENABLED: true
+    BLACKDUCKSCA_FIXPR_ENABLED: false
     #BLACKDUCKSCA_FIXPR_MAXCOUNT: 2
     #BLACKDUCKSCA_FIXPR_USEUPGRADEGUIDANCE: 'SHORT_TERM,LONG_TERM'
     #AZURE_TOKEN: $(System.AccessToken) # Mandatory when BLACKDUCK_FIXPR_ENABLED is set to 'true'
