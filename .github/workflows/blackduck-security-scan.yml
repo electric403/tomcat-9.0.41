@@ -13,11 +13,11 @@ jobs:
     #permissions:
     #  contents: write
     steps:
-      - name: GET Sigma Tools
-        run: |
-          mkdir -p /opt/blackduck/hub/uploads/tools/sigma/
-          curl -o /opt/blackduck/hub/uploads/tools/sigma/2024.6.1_linux_x86_64  https://sig-repo.synopsys.com/artifactory/sigma-release-trial/2024.6.1/sigma-linux_x86_64
-          chmod +x /opt/blackduck/hub/uploads/tools/sigma/2024.6.1_linux_x86_64
+      #- name: GET Sigma Tools
+      #  run: |
+      #    mkdir -p /opt/blackduck/hub/uploads/tools/sigma/
+      #    curl -o /opt/blackduck/hub/uploads/tools/sigma/2024.6.1_linux_x86_64  https://sig-repo.synopsys.com/artifactory/sigma-release-trial/2024.6.1/sigma-linux_x86_64
+      #    chmod +x /opt/blackduck/hub/uploads/tools/sigma/2024.6.1_linux_x86_64
       - name: Checkout Source
         uses: actions/checkout@v3
       - name: Black Duck Security Scan
@@ -26,7 +26,7 @@ jobs:
         with:
           blackducksca_url: ${{ vars.BLACKDUCK_URL }}
           blackducksca_token: ${{ secrets.BLACKDUCK_TOKEN }}
-          blackducksca_scan_failure_severities : 'BLOCKER,CRITICAL'
+          #blackducksca_scan_failure_severities : 'BLOCKER,CRITICAL'
           detect_args: '--detect.diagnostic=false --detect.logging=INFO --detect.project.name=gh-tomcat-9.0.41 --detect.project.version.name=synopsys-action --detect.tools=ALL --detect.excluded.detector.types=GIT'
           blackducksca_scan_full : 'true'
           detect_search_depth: 4
@@ -35,12 +35,11 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
           BLACKDUCK_TRUST_CERT: false
-      #    DETECT_LATEST_RELEASE_VERSION: 9.5. #does not work...
-      #- name: Copy Output
-      #  run: |
-      #    cp /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json ${{ github.workspace }}report.sarif.json
-      #- uses: actions/upload-artifact@v4
-      #  with:
-      #    name: report.sarif.json
-      #    path: ${{ github.workspace }}report.sarif.json
-      #    compression-level: 0 # no compression    
+      - name: Copy Output
+        run: |
+          cp /home/runner/work/tomcat-9.0.41/tomcat-9.0.41/.bridge/"Blackduck SARIF Generator"/report.sarif.json ${{ github.workspace }}report.sarif.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: report.sarif.json
+          path: ${{ github.workspace }}report.sarif.json
+          compression-level: 0 # no compression    
