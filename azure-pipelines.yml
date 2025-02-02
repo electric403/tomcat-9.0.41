@@ -1,8 +1,8 @@
 trigger:
 - main
 
-pool: "Azure Pipelines"
-#pool: self-hosted
+#pool: "Azure Pipelines"
+pool: self-hosted
   
 variables:
   - group: Blackduck
