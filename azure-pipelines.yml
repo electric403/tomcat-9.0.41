@@ -1,8 +1,8 @@
 trigger:
 - main
 
-#pool: "Azure Pipelines"
-pool: ado-runners
+#pool: "self-hosted"
+pool: "ado-runners"
   
 variables:
   - group: Blackduck
