@@ -2,7 +2,7 @@ trigger:
 - main
 
 #pool: "self-hosted"
-pool: "ado-vmss"
+pool: "win-vmss-pool"
   
 variables:
   - group: Blackduck
