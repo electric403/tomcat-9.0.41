@@ -3,7 +3,9 @@ trigger:
 
 #pool: "self-hosted"
 #2022
-pool: "win-vmss-pool"
+#pool: "win-vmss-pool"
+pool:
+ vmImage: 'ubuntu:latest'
   
 variables:
   - group: Blackduck
