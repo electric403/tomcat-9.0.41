@@ -1,14 +1,13 @@
 trigger:
 - main
 
-#pool: "self-hosted"
-#2022
+pool: "self-hosted"
 #pool: "win-vmss-pool"
-pool:
- vmImage: 'ubuntu:latest'
+#pool:
+# vmImage: 'ubuntu:latest'
   
 variables:
-  - group: Blackduck
+  - group: Black Duck
 
 steps:
 - task: BlackDuckSecurityScan@2.0.0
