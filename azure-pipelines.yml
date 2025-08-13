@@ -14,7 +14,7 @@ steps:
   inputs:
     BLACKDUCKSCA_URL: $(BLACKDUCKSCA_URL)
     BLACKDUCKSCA_TOKEN: $(BLACKDUCKSCA_TOKEN)
-    BLACKDUCKSCASCA_SCAN_FULL: true
+    BLACKDUCKSCASCA_SCAN_FULL: false
     BLACKDUCKSCA_WAITFORSCAN: true 
     DETECT_SEARCH_DEPTH: 4
     DETECT_ARGS: '--blackduck.trust.cert=true --detect.diagnostic=true --detect.accuracy.required=NONE --detect.logging=DEBUG'
