@@ -29,9 +29,9 @@ steps:
     continueOnError: true
         
 ### Uncomment below configuration to add custom logic based on return status    
-# - task: CmdLine@2
-#   displayName: 'Command Line'
-#   condition: not(eq(variables['BlackDuckSecurityScan.status'], '0'))
-#   inputs:
-#     script: |
-#       echo Black Duck Security Scan exit status - $(BlackDuckSecurityScan.status)      
+- task: CmdLine@2
+  displayName: 'Command Line'
+  condition: not(eq(variables['BlackDuckSecurityScan.status'], '0'))
+  inputs:
+    script: |
+      echo Black Duck Security Scan exit status - $(BlackDuckSecurityScan.status)      
