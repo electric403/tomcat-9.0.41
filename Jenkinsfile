@@ -1,9 +1,8 @@
 node {
     checkout scm
     stage("BlackDuckSecruityScan") {
+        echo "Branch: ${env.BRANCH_NAME}"
         if (env.BRANCH_NAME == 'main' || env.BRANCH_NAME =~ /^PR-\d+$/) {
-            echo "Branch: ${env.BRANCH_NAME}"
-
             def status = security_scan product: 'blackducksca',
                 // Uncomment if below parameters are not set in global configuration
                 // blackducksca_url: 'BLACKDUCKSCA_URL',             
